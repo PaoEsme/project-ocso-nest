@@ -4,7 +4,7 @@ import { AuthController } from './auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { EXPIRES_IN, JWT_KEY } from 'src/constants/jwt.constants';
+import { EXPIRES_IN, JWT_KEY } from 'src/auth/constants/jwt.constants';
 
 @Module({
   imports: [
