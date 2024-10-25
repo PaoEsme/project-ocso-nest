@@ -1,7 +1,7 @@
 import { Employee } from "src/employees/entities/employee.entity";
 import { Manager } from "src/managers/entities/manager.entity";
 import { Region } from "src/regions/entities/region.entity";
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class Location {
@@ -10,9 +10,9 @@ export class Location {
     @Column('text')
     locationName: string;
     @Column('text')
-    locationAdress: string;
+    locationAddress: string;
     @Column('simple-array')
-    locationLatng: number;
+    locationLatLng: number[];
 
     @OneToOne(() => Manager)
     @JoinColumn({
@@ -25,6 +25,6 @@ export class Location {
     })
     region: Region;
 
-    @OneToOne(() => Employee, (employee) => employee.location)
+    @OneToMany(() => Employee, (employee) => employee.location)
     employees: Employee[];
 }
